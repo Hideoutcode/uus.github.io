@@ -1,122 +1,147 @@
-*{
-	box-sizing: border-box;
-	font-family: 'minecraftfont','Roboto', sans-serif;
+* {
+	 margin: 0;
+	 padding: 0;
+	 box-sizing: border-box;
+	 font-family: 'Nunito', sans-serif;
 }
-
-
-@font-face {
-    font-family: "minecraftfont";
-    src: url(/public/fonts/1412/minecraftfont.eot);
-    src: local("minecraftfont"), url(http://fontsforweb.com/public/fonts/1412/minecraftfont.ttf) format("truetype");
+ html, body {
+	 background: linear-gradient(120deg, rgba(2, 19, 300, 1), rgba(, 10, 20, 1));
+	 overflow: hidden;
 }
-
-body{
-	background-color: #eee;
+ .container {
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
+	 flex-direction: column;
+	 height: 100vh;
+	 width: 100vw;
 }
-
-.tools{
-	display: flex;
-	div{
-		margin: 15px;
-		text-align: center;
-	}
-	button{
-		border: 0;
-		min-width: 30px;
-		height: 30px;
-		border: 1px #777 solid;
-		margin: 1px;
-	}
+ .container h1 {
+	 margin: 0.5em auto;
+	 color: #fff;
+	 text-align: center;
 }
-
-.container{
-	max-width: 720px;
-	margin: 0 auto;
+ .chatbox {
+	 background: rgba(255, 255, 255, 0.05);
+	 width: 600px;
+	 height: 75%;
+	 border-radius: 0.2em;
+	 position: relative;
+	 box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.1);
 }
-
-.editor{
-	display: flex;
+ .chatbox__messages:nth-of-type(odd) .chatbox__messages__user-message--ind-message {
+	 float: right;
 }
-
-textarea {
-	background: #ccc;
-	font-size: 16px;
-	width: 50%;
-	height: 200px;
-	//resize: vertical;
-	padding: 10px;
-	border: 1px #777 solid;
+ .chatbox__messages:nth-of-type(odd) .chatbox__messages__user-message--ind-message:after {
+	 content: '';
+	 position: absolute;
+	 margin: -1.5em -17.06em;
+	 width: 0;
+	 height: 0;
+	 border-top: 10px solid transparent;
+	 border-bottom: 10px solid transparent;
+	 border-right: 10px solid rgba(255, 255, 255, 0.2);
 }
-.output {
-	
-	padding: 10px;
-	color: #fff;
-	height: 200px;
-	width: 50%;
-	background-color: #eee;
-	border: 1px #777 solid;
-	border-left: 0;
-	font-family: 'minecraftfont', 'Roboto', sans-serif;
-	background: url(https://s-media-cache-ak0.pinimg.com/originals/0e/1f/c2/0e1fc2e0638e878d3ba8db495152164c.jpg);
-	background-size: cover;
-	box-shadow: inset 0 0 0 1000px rgba(0,0,0,.4);
+ .chatbox__messages:nth-of-type(even) .chatbox__messages__user-message--ind-message {
+	 float: left;
 }
-
-.bgs{
-	margin: 20px 15px;
-	display: flex;
-	justify-content: space-between;
-	div{
-		margin: 10px;
-		flex-grow: 1;
-		width: 100px;
-		height: 60px;
-		background-color: #000;
-		background-size: cover;
-		box-shadow: inset 0 0 0 1000px rgba(0,0,0,.4);
-	}
-	.plains{
-		background: url(https://dncache-mauganscorp.netdna-ssl.com/thumbseg/1006/1006445-bigthumbnail.jpg) center no-repeat;
-		background-size: cover;
-	}
-	.dirt{
-		background: url(https://s-media-cache-ak0.pinimg.com/originals/0e/1f/c2/0e1fc2e0638e878d3ba8db495152164c.jpg) center no-repeat;
-		border: 3px #aaa solid;
-	}
-	.item{
-		background-color: lighten(#110211,20%);
-	}
+ .chatbox__messages:nth-of-type(even) .chatbox__messages__user-message--ind-message:after {
+	 content: '';
+	 position: absolute;
+	 margin: -1.5em 1.87em;
+	 width: 0;
+	 height: 0;
+	 border-top: 10px solid transparent;
+	 border-bottom: 10px solid transparent;
+	 border-left: 10px solid rgba(255, 255, 255, 0.2);
 }
-
-
-// .main{
-// 	margin: 15px;
-// }
-// .label {
-// 	background: rgba(0, 0, 0, 0.5);
-// 	color: #fff;
-// 	width: 35%;
-// 	text-align: center;
-// 	margin: 0 auto;
-// }
-
-@function set-text-color($color) {
-  @if (lightness($color) > 50) {
-    @return #000000;
-  } @else {
-    @return #ffffff;
-  }
+ .chatbox__messages__user-message {
+	 width: 450px;
 }
-
-$colors: #000 #00A #0A0 #0AA #A00 #A0A #FA0 #AAA #555 #55F #5F5 #5FF #F55 #F5F #FF5 #FFF;
-@for $i from 1 through length($colors){
-	.bg-#{$i} {
-		background-color: nth($colors, $i);
-		color: set-text-color(nth($colors, $i));
-	}
+ .chatbox__messages__user-message--ind-message {
+	 background: rgba(255, 255, 255, 0.2);
+	 padding: 1em 0;
+	 height: auto;
+	 width: 65%;
+	 border-radius: 5px;
+	 margin: 2em 1em;
+	 overflow: auto;
 }
-@for $i from 1 through length($colors){
-	.c-#{$i} {
-		color: nth($colors, $i);
-	}
+ .chatbox__messages__user-message--ind-message > p.name {
+	 color: #fff;
+	 font-size: 1em;
 }
+ .chatbox__messages__user-message--ind-message > p.message {
+	 color: #fff;
+	 font-size: 0.7em;
+	 margin: 0 2.8em;
+}
+ .chatbox__user-list {
+	 background: rgba(255, 255, 255, 0.1);
+	 width: 25%;
+	 height: 100%;
+	 float: right;
+	 border-top-right-radius: 0.2em;
+	 border-bottom-right-radius: 0.2em;
+}
+ .chatbox__user-list h1 {
+	 background: rgba(255, 255, 255, 0.05);
+	 color: rgba(255, 255, 255, 0.9);
+	 font-size: 0.9em;
+	 padding: 1em;
+	 margin: 0;
+	 font-weight: 300;
+	 text-align: center;
+}
+ .chatbox__user, .chatbox__user--active, .chatbox__user--busy, .chatbox__user--away {
+	 width: 0.5em;
+	 height: 0.5em;
+	 border-radius: 100%;
+	 margin: 1em 0.7em;
+}
+ .chatbox__user--active {
+	 background: rgba(23, 190, 187, 0.8);
+}
+ .chatbox__user--busy {
+	 background: rgba(252, 100, 113, 0.8);
+}
+ .chatbox__user--away {
+	 background: rgba(255, 253, 130, 0.8);
+}
+ .chatbox p {
+	 float: left;
+	 text-align: left;
+	 margin: -0.25em 2em;
+	 font-size: 0.7em;
+	 font-weight: 300;
+	 color: #fff;
+	 width: 200px;
+}
+ .chatbox form {
+	 background: #222;
+}
+ .chatbox form input {
+	 background: rgba(255, 255, 255, 0.03);
+	 position: absolute;
+	 bottom: 0;
+	 left: 0;
+	 border: none;
+	 width: 75%;
+	 padding: 1.2em;
+	 outline: none;
+	 color: rgba(255, 255, 255, 0.9);
+	 font-weight: 300;
+}
+ ::-webkit-input-placeholder {
+	 color: rgba(255, 255, 255, 0.9);
+}
+ :-moz-placeholder {
+	 color: rgba(255, 255, 255, 0.9);
+}
+ ::-moz-placeholder {
+	 color: rgba(255, 255, 255, 0.9);
+}
+ :-ms-input-placeholder {
+	 color: rgba(255, 255, 255, 0.9);
+}
+ 
