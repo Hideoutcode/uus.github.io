@@ -1,9 +1,4 @@
-// ==========================================
-// Renderer
-//
-// This class contains the code that takes care of visualising the
-// elements in the specified world.
-// ==========================================
+
 
 // Shaders
 var vertexSource =
